@@ -49,10 +49,8 @@ export default function Home() {
       <div
         className="bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-blue-900 min-h-screen transition-colors duration-300">
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-
         <main className="container mx-auto px-4 py-8 flex-grow">
           <SubjectExplorer searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedSemester={selectedSemester} setSelectedSemester={setSelectedSemester} />
-
           <Tabs defaultValue="all" className="mb-12">
             <TabsOption />
             <TabsData tab="all" filteredSubjects={filteredSubjects} savedSubjects={savedSubjects} toggleSavedSubject={toggleSavedSubject} />
