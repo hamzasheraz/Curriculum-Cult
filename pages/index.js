@@ -59,7 +59,7 @@ export default function Home() {
           <SubjectExplorer searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedSemester={selectedSemester} setSelectedSemester={setSelectedSemester} />
 
           <Tabs defaultValue="all" className="mb-12">
-            <TabsOption />
+            <TabsOption/>
             <TabsData tab="all" filteredSubjects={filteredSubjects} savedSubjects={savedSubjects} toggleSavedSubject={toggleSavedSubject}/>
             <TabsContent value="saved">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
