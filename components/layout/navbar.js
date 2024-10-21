@@ -1,7 +1,7 @@
 import { Button } from "../ui/button"
 import { Moon, Sun } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({darkMode,setDarkMode}) => {
     return (
         <header className="bg-white dark:bg-gray-800 shadow-md">
             <div className="container mx-auto px-4 py-6 flex justify-between items-center">

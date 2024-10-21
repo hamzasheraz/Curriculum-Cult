@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Search, Moon, Sun, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import Link from 'next/link'
 import Footer from '@/components/layout/footer'
+import Navbar from '@/components/layout/navbar'
+import SubjectExplorer from '@/components/homepage/subjectexplorer'
 
 const subjects = [
   { id: 1, name: "Mathematics", semesters: [1, 2, 3, 4] },
@@ -56,62 +56,10 @@ export default function Home() {
     (<div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
       <div
         className="bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-blue-900 min-h-screen transition-colors duration-300">
-        <header className="bg-white dark:bg-gray-800 shadow-md">
-          <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-400">Curriculum Cult</h1>
-            <nav className="flex items-center space-x-4">
-              {/* <ul className="flex space-x-4">
-                <li><a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
-                <li><a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a></li>
-                <li><a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
-              </ul> */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setDarkMode(!darkMode)}
-                aria-label="Toggle theme">
-                {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </Button>
-            </nav>
-          </div>
-        </header>
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
         <main className="container mx-auto px-4 py-8 flex-grow">
-          <section className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Explore Subjects</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">Discover and manage your academic journey</p>
-            <div className="flex justify-center gap-4 flex-wrap">
-              <div className="relative w-full max-w-md">
-                <Search
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" />
-                <Input
-                  type="text"
-                  placeholder="Search for subjects..."
-                  className="pl-10 pr-4 py-2 w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)} />
-              </div>
-              <Select value={selectedSemester} onValueChange={setSelectedSemester}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select Semester" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem >All Semesters</SelectItem>
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((semester) => (
-                    <SelectItem key={semester} value={semester.toString()}>
-                      Semester {semester}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </section>
+          <SubjectExplorer searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedSemester={selectedSemester} setSelectedSemester={setSelectedSemester}/>
 
           <Tabs defaultValue="all" className="mb-12">
             <TabsList className="grid w-full grid-cols-2">
