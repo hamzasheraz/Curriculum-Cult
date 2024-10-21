@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input"
 import { Search } from 'lucide-react';
 
-const SearchSubject = ({searchTerm,setSearchTerm}) => {
+const SearchSubject = ({ searchTerm, setSearchTerm }) => {
     return (
         <div className="relative w-full max-w-md">
             <Search

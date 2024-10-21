@@ -9,7 +9,8 @@ import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import SubjectExplorer from '@/components/homepage/subjectexplorer'
 import useDarkMode from '@/hooks/useDarkMode'
-import TabsOption from '@/components/homepage/tabs'
+import TabsOption from '@/components/homepage/tabsoption'
+import TabsData from '@/components/homepage/tabsdata'
 
 const subjects = [
   { id: 1, name: "Mathematics", semesters: [1, 2, 3, 4] },
@@ -59,47 +60,7 @@ export default function Home() {
 
           <Tabs defaultValue="all" className="mb-12">
             <TabsOption />
-            <TabsContent value="all">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {filteredSubjects.map((subject) => (
-                  <Card
-                    key={subject.id}
-                    className="hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-gray-700">
-                    <CardContent className="p-6">
-                      <div className="flex justify-between items-start mb-4">
-                        <Link href={`/subject/${subject.id}`} className="block">
-                          <h3
-                            className="text-xl font-semibold text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400">
-                            {subject.name}
-                          </h3>
-                        </Link>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => toggleSavedSubject(subject.id)}
-                          aria-label={savedSubjects.includes(subject.id) ? "Remove from saved" : "Save subject"}>
-                          {savedSubjects.includes(subject.id) ? (
-                            <Heart className="h-5 w-5 text-red-500" fill="currentColor" />
-                          ) : (
-                            <Heart className="h-5 w-5 text-gray-400 hover:text-red-500" />
-                          )}
-                        </Button>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {subject.semesters.map((semester) => (
-                          <Badge
-                            key={semester}
-                            variant="secondary"
-                            className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                            Semester {semester}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
+            <TabsData filteredSubjects={filteredSubjects} savedSubjects={savedSubjects}/>
             <TabsContent value="saved">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {subjects.filter(subject => savedSubjects.includes(subject.id)).map((subject) => (
