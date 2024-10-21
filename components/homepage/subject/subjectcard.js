@@ -1,4 +1,5 @@
 import CardData from '../card/carddata';
+import { Card } from "@/components/ui/card"
 
 const SubjectCard = ({ subject, savedSubjects, toggleSavedSubject }) => {
   return (
