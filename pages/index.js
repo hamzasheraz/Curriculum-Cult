@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Heart } from 'lucide-react';
 import Link from 'next/link'
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import SubjectExplorer from '@/components/homepage/subjectexplorer'
 import useDarkMode from '@/hooks/useDarkMode'
+import TabsOption from '@/components/homepage/tabs'
 
 const subjects = [
   { id: 1, name: "Mathematics", semesters: [1, 2, 3, 4] },
@@ -57,10 +58,7 @@ export default function Home() {
           <SubjectExplorer searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedSemester={selectedSemester} setSelectedSemester={setSelectedSemester} />
 
           <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="all">All Subjects</TabsTrigger>
-              <TabsTrigger value="saved">Saved Subjects</TabsTrigger>
-            </TabsList>
+            <TabsOption />
             <TabsContent value="all">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {filteredSubjects.map((subject) => (
