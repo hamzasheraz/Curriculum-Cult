@@ -1,16 +1,12 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import {TabsContent } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
 import Link from 'next/link'
+import { Card, CardContent } from "@/components/ui/card"
 import { Heart } from 'lucide-react';
+import { Button } from "@/components/ui/button"
+import SemesterCard from "../semester/semestercard"
 
-const TabsData = ({filteredSubjects,savedSubjects}) => {
+const SubjectCard = ({subject,savedSubjects,toggleSavedSubject}) => {
   return (
-    <TabsContent value="all">
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {filteredSubjects.map((subject) => (
-        <Card
+    <Card
           key={subject.id}
           className="hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-gray-700">
           <CardContent className="p-6">
@@ -33,22 +29,10 @@ const TabsData = ({filteredSubjects,savedSubjects}) => {
                 )}
               </Button>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {subject.semesters.map((semester) => (
-                <Badge
-                  key={semester}
-                  variant="secondary"
-                  className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-                  Semester {semester}
-                </Badge>
-              ))}
-            </div>
+           <SemesterCard subject={subject} />
           </CardContent>
         </Card>
-      ))}
-    </div>
-  </TabsContent>
   )
 }
 
-export default TabsData
+export default SubjectCard

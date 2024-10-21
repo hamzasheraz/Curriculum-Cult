@@ -7,10 +7,10 @@ import { Heart } from 'lucide-react';
 import Link from 'next/link'
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
-import SubjectExplorer from '@/components/homepage/subjectexplorer'
+import SubjectExplorer from '@/components/homepage/subject/subjectexplorer'
 import useDarkMode from '@/hooks/useDarkMode'
-import TabsOption from '@/components/homepage/tabsoption'
-import TabsData from '@/components/homepage/tabsdata'
+import TabsOption from '@/components/homepage/tabs/tabsoption'
+import TabsData from '@/components/homepage/tabs/tabsdata'
 
 const subjects = [
   { id: 1, name: "Mathematics", semesters: [1, 2, 3, 4] },
@@ -60,7 +60,7 @@ export default function Home() {
 
           <Tabs defaultValue="all" className="mb-12">
             <TabsOption />
-            <TabsData filteredSubjects={filteredSubjects} savedSubjects={savedSubjects}/>
+            <TabsData tab="all" filteredSubjects={filteredSubjects} savedSubjects={savedSubjects} toggleSavedSubject={toggleSavedSubject}/>
             <TabsContent value="saved">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {subjects.filter(subject => savedSubjects.includes(subject.id)).map((subject) => (

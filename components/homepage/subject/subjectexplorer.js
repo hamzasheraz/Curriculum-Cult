@@ -1,5 +1,5 @@
-import SearchSubject from "./search"
-import SemesterSelect from "./semesterselect"
+import SearchSubject from "../search"
+import SemesterSelect from "../semester/semesterselect"
 
 const SubjectExplorer = ({ searchTerm, setSearchTerm, selectedSemester, setSelectedSemester }) => {
     return (
