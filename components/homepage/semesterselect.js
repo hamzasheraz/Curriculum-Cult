@@ -8,7 +8,7 @@ const SemesterSelect = ({ selectedSemester, setSelectedSemester }) => {
                 <SelectValue placeholder="Select Semester" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem >All Semesters</SelectItem>
+                <SelectItem value="all">All Semesters</SelectItem>
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((semester) => (
                     <SelectItem key={semester} value={semester.toString()}>
                         Semester {semester}

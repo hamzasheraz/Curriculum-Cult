@@ -30,7 +30,7 @@ const subjects = [
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedSemester, setSelectedSemester] = useState("")
+  const [selectedSemester, setSelectedSemester] = useState("all")
   const [darkMode, setDarkMode] = useState(false)
   const [savedSubjects, setSavedSubjects] = useState([])
 
@@ -38,7 +38,7 @@ export default function Home() {
 
   const filteredSubjects = subjects.filter(subject =>
     subject.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (selectedSemester === "" || subject.semesters.includes(parseInt(selectedSemester))))
+    (selectedSemester === "all" || subject.semesters.includes(parseInt(selectedSemester))))
 
   const toggleSavedSubject = (subjectId) => {
     setSavedSubjects(prev =>
