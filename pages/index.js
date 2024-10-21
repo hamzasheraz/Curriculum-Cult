@@ -1,10 +1,5 @@
 import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent } from "@/components/ui/tabs"
-import { Heart } from 'lucide-react';
-import Link from 'next/link'
+import { Tabs } from "@/components/ui/tabs"
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import SubjectExplorer from '@/components/homepage/subject/subjectexplorer'
@@ -50,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    (<div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
+    <div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
       <div
         className="bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-blue-900 min-h-screen transition-colors duration-300">
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -66,6 +61,6 @@ export default function Home() {
         </main>
       </div>
       <Footer />
-    </div>)
+    </div>
   );
 }
