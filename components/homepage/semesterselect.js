@@ -1,6 +1,7 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const SemesterSelect = ({ selectedSemester, setSelectedSemester }) => {
+    console.log(selectedSemester);
     return (
         <Select value={selectedSemester} onValueChange={setSelectedSemester}>
             <SelectTrigger className="w-[180px]">

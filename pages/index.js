@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import SubjectExplorer from '@/components/homepage/subjectexplorer'
+import useDarkMode from '@/hooks/useDarkMode'
 
 const subjects = [
   { id: 1, name: "Mathematics", semesters: [1, 2, 3, 4] },
@@ -33,21 +34,15 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false)
   const [savedSubjects, setSavedSubjects] = useState([])
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [darkMode])
+  useDarkMode(darkMode);
 
-  const filteredSubjects = subjects.filter(subject => 
+  const filteredSubjects = subjects.filter(subject =>
     subject.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (selectedSemester === "" || subject.semesters.includes(parseInt(selectedSemester))))
 
   const toggleSavedSubject = (subjectId) => {
-    setSavedSubjects(prev => 
-      prev.includes(subjectId) 
+    setSavedSubjects(prev =>
+      prev.includes(subjectId)
         ? prev.filter(id => id !== subjectId)
         : [...prev, subjectId])
   }
@@ -56,10 +51,10 @@ export default function Home() {
     (<div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
       <div
         className="bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-blue-900 min-h-screen transition-colors duration-300">
-          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
         <main className="container mx-auto px-4 py-8 flex-grow">
-          <SubjectExplorer searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedSemester={selectedSemester} setSelectedSemester={setSelectedSemester}/>
+          <SubjectExplorer searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedSemester={selectedSemester} setSelectedSemester={setSelectedSemester} />
 
           <Tabs defaultValue="all" className="mb-12">
             <TabsList className="grid w-full grid-cols-2">
@@ -147,7 +142,7 @@ export default function Home() {
           </Tabs>
         </main>
       </div>
-      <Footer/>
+      <Footer />
     </div>)
   );
 }
